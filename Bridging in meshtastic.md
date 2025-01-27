@@ -70,7 +70,9 @@ Hier können wir **sowohl off-grid als auch off-network** arbeiten. Wir bauen un
 Falls ihr eh einen eigenen, privaten Server für die MQTT nutzt ist das natürlich irrelevant.
 3. **MQTT entignorieren**
     Per default ist der Punkt `Geräteeinstellungen->LoRa->Ignore MQTT` auf **an**. Das sorgt dafür, dass der Node Nachrichten, die über einen MQTT-Pfad gekommen sind, ignoriert und damit auch nicht weiterleitet. Das sollte also auf allen Knoten, die über die Bridge kommunizieren wollen, ausgeschaltet sein.
-4. **Channels konfigurieren**
+4. **MQTT erlauben**
+    In einer späten 2.5-Release kam ein neuer Schalter dazu, den wir anschalten müssen, wenn unsere Nachrichten gebridged werden dürfen: `Geräteeinstellungen->LoRa->OK to MQTT`. Vorsicht: Wird beim Flashen der neueren Firmware die Konfiguration nicht geändert, funktioniert das _per default_ nicht mehr!
+5. **Channels konfigurieren**
     Jeder Kanal, der über die Bridge laufen soll, muss das explizit eingestellt haben, der default ist keine Weiterleitung! `Radio Config->Channels` bringt euch zu den Kanälen. Wählt den zu bridgenden Kanal aus und schaltet `Downlink enabled` (überträgt von der MQTT per HF) und `Uplink enabled` (überträgt eure HF-Nachrichten an die MQTT) **an**
 
 Das wars schon! Viel Spaß beim Bridges bauen! Nachher kanns so aussehen:
