@@ -61,18 +61,18 @@ Hier können wir **sowohl off-grid als auch off-network** arbeiten. Wir bauen un
 
 ## Einstellungen in Meshtastic
 
-1. **MQTT anschalten**
+1. **MQTT anschalten** (Bridge Nodes)
    `Moduleinstellungen->MQTT` enthält alle Parameter zum MQTT-Server. Host-/Usernamen, ob die Verbindung transportverschlüsselt wird etc pp. Die Angaben übernehmt ihr für den Projektserver oder ändert sie auf die für euch passende Verbindung.
    Interessant sind hier die Einstellungen
       * `Encryption enabled` (damit werden die Nachricht auf der Queue mit dem on-air-Channelkey verschlüsselt)
       * `JSON enabled` (schickt die Nachrichten auch als JSON, zum Mitlesen sehr hilfreich) und das
       * `root topic`. Hier stellen wir den Pfad ein, unter dem usere Nodes sich in ihrer eigenen Struktur letztlich unterhalten sollen. Die defaults "msh/EU_433" auf dem Projektserver solltet ihr **vermeiden bzw nur für Tests nutzen**, da dort eher viele Nodes sind, die ihr dann mitbridgen würdet - was ihr vermutlich nicht wollt. Wählt einen möglichst spezifischen Pfad, z. B. "msh/DE/BY/Coburg" wenn ihr in Coburg, Bayern, Deutschland seid.
 Falls ihr eh einen eigenen, privaten Server für die MQTT nutzt ist das natürlich irrelevant.
-3. **MQTT entignorieren**
+3. **MQTT entignorieren** (alle)
     Per default ist der Punkt `Geräteeinstellungen->LoRa->Ignore MQTT` auf **an**. Das sorgt dafür, dass der Node Nachrichten, die über einen MQTT-Pfad gekommen sind, ignoriert und damit auch nicht weiterleitet. Das sollte also auf allen Knoten, die über die Bridge kommunizieren wollen, ausgeschaltet sein.
-4. **MQTT erlauben**
+4. **MQTT erlauben** (alle)
     In einer späten 2.5-Release kam ein neuer Schalter dazu, den wir anschalten müssen, wenn unsere Nachrichten gebridged werden dürfen: `Geräteeinstellungen->LoRa->OK to MQTT`. Vorsicht: Wird beim Flashen der neueren Firmware die Konfiguration nicht geändert, funktioniert das _per default_ nicht mehr!
-5. **Channels konfigurieren**
+5. **Channels konfigurieren** (Client Nodes)
     Jeder Kanal, der über die Bridge laufen soll, muss das explizit eingestellt haben, der default ist keine Weiterleitung! `Radio Config->Channels` bringt euch zu den Kanälen. Wählt den zu bridgenden Kanal aus und schaltet `Downlink enabled` (überträgt von der MQTT per HF) und `Uplink enabled` (überträgt eure HF-Nachrichten an die MQTT) **an**
 
 Das wars schon! Viel Spaß beim Bridges bauen! Nachher kanns so aussehen:
